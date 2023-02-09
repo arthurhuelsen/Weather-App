@@ -11,4 +11,5 @@ Aplicativo feito utlizando Html, CSS e Javascript, Usando API de tempo.
 
 Mostra o tempo atual da cidade escolhida, trocando a foto de fundo para uma da cidade escolhida.
 
-![image](https://user-images.githubusercontent.com/101607892/217712989-deec46c8-82a4-4584-964c-b3846a0fbb30.png)
+![image](https://user-images.githubusercontent.com/101607892/217713573-b0e227b7-dc14-443b-b183-fbd7732f2370.png)
+
