@@ -1,0 +1,45 @@
+let weather = {
+  "apiKey": "5f631cac60a5f722dce86b1bef958359",
+  FetchWeather: function (city){
+    fetch(
+      "https://api.openweathermap.org/data/2.5/weather?q="
+      + city 
+      +"&units=metric&lang=pt_br&appid="
+      + this.apiKey
+    )
+    .then((response) => response.json())
+    .then((data) => this.displayWeather(data))
+  },
+
+  displayWeather: function(data){
+    const { name } = data;
+    const { icon } = data.weather[0];
+    const { description } = data.weather[0];
+    const { temp, humidity} = data.main;
+    const { speed } = data.wind;
+    document.querySelector(".city").innerText = "Weather in " + name;
+    document.querySelector(".icon").src =
+      "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+    document.querySelector(".description").innerText = description;
+    document.querySelector(".temp").innerText = temp + "°C";
+    document.querySelector(".humidity").innerText = "Humidade: " + humidity + "%";
+    document.querySelector(".wind").innerText = "Vento: " + speed + "km/h";
+    document.querySelector(".live").innerText = "Atualizado agora🔴";
+    document.body.style.backgroundImage =
+      "url('https://source.unsplash.com/1920x1080/?" + name + " landscape" + "')";
+  },
+  search: function () {
+    this.FetchWeather(document.querySelector(".search-bar").value);
+  },
+};
+
+document.querySelector(".search button").addEventListener("click", function () {
+  weather.search();
+});
+
+document.querySelector(".search-bar").addEventListener("keyup", function (event){
+  if(event.key == "Enter"){
+    weather.search();
+  }
+})
+
